@@ -11,7 +11,6 @@
     "files-scs:config/http/handler/default.json",
     "files-scs:config/http/middleware/websockets.json",
     "files-scs:config/http/server-factory/websockets.json",
-    "files-scs:config/http/static/default.json",
     "files-scs:config/identity/access/public.json",
     "files-scs:config/identity/email/default.json",
     "files-scs:config/identity/handler/default.json",
@@ -59,10 +58,31 @@
     },
 
     {
-      "comment": "Serve Mashlib static files.",
+      "comment": "Serve static files on fixed URLs, and Mashlib static files.",
       "@id": "urn:solid-server:default:StaticAssetHandler",
       "@type": "StaticAssetHandler",
+      "options_expires": 86400,
       "assets": [
+        {
+          "StaticAssetHandler:_assets_key": "/favicon.ico",
+          "StaticAssetHandler:_assets_value": "@css:templates/images/favicon.ico"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/.well-known/css/styles/",
+          "StaticAssetHandler:_assets_value": "@css:templates/styles/"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/.well-known/css/fonts/",
+          "StaticAssetHandler:_assets_value": "@css:templates/fonts/"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/.well-known/css/images/",
+          "StaticAssetHandler:_assets_value": "@css:templates/images/"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/.well-known/css/scripts/",
+          "StaticAssetHandler:_assets_value": "@css:templates/scripts/"
+        },
         {
           "StaticAssetHandler:_assets_key": "/mash.css",
           "StaticAssetHandler:_assets_value": "./node_modules/mashlib/dist/mash.css"
